@@ -134,7 +134,7 @@ def main():
                 X_scaled = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
         
 
-                with open('EASTER_QC_v2.pkl', 'rb') as file:
+                with open('EASTER_QC_v3.pkl', 'rb') as file:
                     model0 = pickle.load(file)
 
 
