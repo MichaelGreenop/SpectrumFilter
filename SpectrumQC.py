@@ -10,6 +10,17 @@ import struct
 from typing import List, Tuple
 
 
+def load_model():
+    with open('EASTER_QC_v3.pkl', 'rb') as file:
+        model = pickle.load(file)
+    return model
+
+# Function to make predictions
+def transform(model, data):
+    values = model_one.transform(data)
+    return values
+
+
 
 class SpaFile:
     def __init__(self, spa_path: str = ""):
@@ -131,15 +142,11 @@ def main():
 
                 X = spectra
 
-                X_scaled = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
-        
+                X_scaled0 = (X - X.min(axis=0)) / (X.max(axis=0) - X.min(axis=0))
 
-                with open('EASTER_QC_v3.pkl', 'rb') as file:
-                    model0 = pickle.load(file)
+                model = load_model()
+                value0 = transform(model, X_scaled0.reshape((1,len(spectra))))
 
-
-
-                value0 = model0.transform(X_scaled.reshape((1,len(spectra))))
                 
                 # Display predictions
                 st.write("Spectral QC outcome:")
@@ -160,11 +167,8 @@ def main():
            
             #st.write('This one') 
 
-            with open('EASTER_QC_v3.pkl', 'rb') as file:
-                model1 = pickle.load(file)
-        
-            # Make predictions
-            value1 = model1.transform(X_scaled1.reshape((1,len(Spectra))))
+            model1 = load_model()
+            value1 = transform(model1, X_scaled1.reshape((1,len(Spectra))))
 
                             
             # Display predictions
