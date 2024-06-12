@@ -1,7 +1,7 @@
 streamlit
 pandas
 numpy
-
-struct
+os-sys
+supyr-struct
 typing
-sklearn
+scikit-learn
