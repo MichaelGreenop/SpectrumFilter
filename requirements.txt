@@ -2,7 +2,6 @@ streamlit
 pandas
 numpy
 
-os
 struct
 typing
 sklearn
