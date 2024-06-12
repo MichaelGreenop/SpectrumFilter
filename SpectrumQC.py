@@ -17,7 +17,7 @@ def load_model():
 
 # Function to make predictions
 def transform(model, data):
-    values = model_one.transform(data)
+    values = model.transform(data)
     return values
 
 
