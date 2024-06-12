@@ -9,7 +9,7 @@ import os
 import struct
 from typing import List, Tuple
 
-
+@st.cache_resource
 def load_model():
     with open('EASTER_QC_v3.pkl', 'rb') as file:
         model = pickle.load(file)
